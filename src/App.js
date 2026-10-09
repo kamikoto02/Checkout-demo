@@ -1,4 +1,6 @@
 import './App.css';
+import { db } from "./firebase";
+import { collection, addDoc } from "firebase/firestore";
 import { useState, useEffect } from "react";
 
 function App() {
@@ -47,9 +49,46 @@ function App() {
         );
     };
 
+
+    const submitHandler = async (e) => {
+        e.preventDefault();
+
+        try {
+            await addDoc(collection(db, "orders"), {
+                players,
+                packagePrice,
+                pizzas: pickedPizza,
+                bigSoda,
+                smallSoda,
+                birthdayRoom,
+                datetime: e.target.datetime.value,
+                totalPrice: price,
+                createdAt: new Date()
+            });
+            alert("Bestilling sendt!");
+
+            setPlayers(0);
+            setPackagePrice(0);
+            setPickedPizza([]);
+            setBigSoda(0);
+            setSmallSoda(0);
+            setBirthdayRoom("nei");
+            setPrice(0);
+            e.target.reset();
+
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Noe gikk galt");
+        }
+    };
+
+
+
+
+
     return (
         <div className="App">
-            <form action="#">
+            <form  onSubmit={submitHandler}>
                 <h2>CHECKOUT</h2>
 
                 <div className="first-group">
@@ -73,6 +112,7 @@ function App() {
                         <select
                             name="package"
                             onChange={e => setPackagePrice(Number(e.target.value))}
+                            required
                         >
                             <option value="0">-</option>
                             <option value="250">2 x 15 min – 250 kr pr. person</option>
@@ -100,6 +140,7 @@ function App() {
                                 e.target.value = "0";
                             }
                         }}
+                    required
                     >
                         <option value="0">Velge</option>
                         <option value="150">Skinkepizza</option>
@@ -170,7 +211,7 @@ function App() {
                 <h3>Dato</h3>
                 <label>
                     Velg dato og tid:
-                    <input className="date-input" type="datetime-local" name="datetime" />
+                    <input className="date-input" type="datetime-local" name="datetime" required />
                 </label>
 
                 <span className="price">Total pris: {price} kr</span>
