@@ -1,0 +1,13 @@
+.header {
+    height: 50px;
+    background-color: #3e3f40;
+}
+.header_container {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+h1 {
+    position: relative;
+    top: 5px;
+    color: #848687;
+}

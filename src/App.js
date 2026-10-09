@@ -2,6 +2,7 @@ import './App.css';
 import { db } from "./firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { useState, useEffect } from "react";
+import Header from "./components/header/Header";
 
 function App() {
     const [pickedPizza, setPickedPizza] = useState([]);
@@ -87,6 +88,7 @@ function App() {
 
     return (
         <div className="App">
+            <Header />
             <form  onSubmit={submitHandler}>
                 <h2>CHECKOUT</h2>
                 <label>
