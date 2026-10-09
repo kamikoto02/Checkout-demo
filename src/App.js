@@ -11,6 +11,7 @@ function App() {
     const [smallSoda, setSmallSoda] = useState(0);
     const [birthdayRoom, setBirthdayRoom] = useState("nei");
     const [price, setPrice] = useState(0);
+    const [name, setName] = useState('')
 
 
     useEffect(() => {
@@ -55,6 +56,7 @@ function App() {
 
         try {
             await addDoc(collection(db, "orders"), {
+                name,
                 players,
                 packagePrice,
                 pizzas: pickedPizza,
@@ -66,7 +68,7 @@ function App() {
                 createdAt: new Date()
             });
             alert("Bestilling sendt!");
-
+            setName('')
             setPlayers(0);
             setPackagePrice(0);
             setPickedPizza([]);
@@ -83,14 +85,21 @@ function App() {
     };
 
 
-
-
-
     return (
         <div className="App">
             <form  onSubmit={submitHandler}>
                 <h2>CHECKOUT</h2>
-
+                <label>
+                    <p>Your full name:</p>
+                    <input
+                        placeholder="Name Surname"
+                        value={name}
+                        onChange={e => setName(e.target.value)}
+                        className="user-input"
+                        type="text"
+                        required
+                    />
+                </label>
                 <div className="first-group">
                     <label>
                         Antall spillere:

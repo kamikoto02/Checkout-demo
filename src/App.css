@@ -100,6 +100,17 @@ select {
 h3 {
   border-bottom: 2px solid #383638;
 }
+.user-input {
+  background-color: #403e40;
+  border: none;
+  padding: 6px 12px;
+  margin-left: 10px;
+  border-radius: 5px;
+  color: white;
+  position: relative;
+  right: 10px;
+  top: 5px;
+}
 
 
 @keyframes show {
