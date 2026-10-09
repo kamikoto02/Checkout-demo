@@ -6,9 +6,8 @@ form {
   border: 2px solid #383638;
   padding: 20px;
   animation: show 2s ease-in-out;
-  box-shadow: 2px -1px 18px 0px rgba(0,0,0,0.75);
-  -webkit-box-shadow: 2px -1px 18px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 2px -1px 18px 0px rgba(0,0,0,0.75);
+  box-shadow: 2px -1px 18px 0 rgba(0,0,0,0.75);
+  -webkit-box-shadow: 2px -1px 18px 0 rgba(0,0,0,0.75);
 }
 label {
   display: block;

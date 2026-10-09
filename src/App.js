@@ -101,7 +101,7 @@ function App() {
                             }
                         }}
                     >
-                        <option value="0">-</option>
+                        <option value="0">Velge</option>
                         <option value="150">Skinkepizza</option>
                         <option value="175">Pepperonipizza</option>
                         <option value="155">Vegetarpizza</option>
