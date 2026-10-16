@@ -89,7 +89,6 @@ function App() {
         }
     };
 
-
     function handleOpenModal() {
         modal.current.open()
 
@@ -97,11 +96,6 @@ function App() {
     function handleCloseModal() {
         modal.current.close()
     }
-
-
-
-
-
 
     return (
         <div className="App">
@@ -151,8 +145,6 @@ function App() {
                         </select>
                     </label>
                 </div>
-
-                {/* PIZZA */}
                 <h3>Pizza</h3>
                 <label>
                     Velg pizza
@@ -192,8 +184,6 @@ function App() {
                         </div>
                     )}
                 </label>
-
-                {/* BRUS */}
                 <h3>Brus</h3>
                 <label>
                     Stor brus (0,6l – 55 kr):
@@ -224,8 +214,6 @@ function App() {
                         <option value="5">5</option>
                     </select>
                 </label>
-
-                {/* Bursdagsrom */}
                 <h3>Bursdagsrom</h3>
                 <label>
                     Bursdagsrom (250 kr):
@@ -237,8 +225,6 @@ function App() {
                         <option value="ja">Ja</option>
                     </select>
                 </label>
-
-                {/* Dato */}
                 <h3>Dato</h3>
                 <label>
                     Velg dato og tid:
