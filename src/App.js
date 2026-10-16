@@ -1,8 +1,10 @@
 import './App.css';
 import { db } from "./firebase";
 import { collection, addDoc } from "firebase/firestore";
-import { useState, useEffect } from "react";
+import {useState, useEffect, useRef} from "react";
 import Header from "./components/header/Header";
+import Modal from "./components/modal/Modal";
+import SuccessfulModal from "./components/modal/SuccessfulModal/SuccessfulModal";
 
 function App() {
     const [pickedPizza, setPickedPizza] = useState([]);
@@ -13,6 +15,8 @@ function App() {
     const [birthdayRoom, setBirthdayRoom] = useState("nei");
     const [price, setPrice] = useState(0);
     const [name, setName] = useState('')
+
+    const modal = useRef(null);
 
 
     useEffect(() => {
@@ -68,7 +72,7 @@ function App() {
                 totalPrice: price,
                 createdAt: new Date()
             });
-            alert("Bestilling sendt!");
+            handleOpenModal()
             setName('')
             setPlayers(0);
             setPackagePrice(0);
@@ -86,8 +90,24 @@ function App() {
     };
 
 
+    function handleOpenModal() {
+        modal.current.open()
+
+    }
+    function handleCloseModal() {
+        modal.current.close()
+    }
+
+
+
+
+
+
     return (
         <div className="App">
+            <Modal ref={modal}>
+                <SuccessfulModal price={price} onClose={handleCloseModal}/>
+            </Modal>
             <Header />
             <form  onSubmit={submitHandler}>
                 <h2>CHECKOUT</h2>
