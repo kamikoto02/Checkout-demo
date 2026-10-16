@@ -3,7 +3,7 @@ import React from 'react';
 const SuccessfulModal = ({onClose}) => {
     return (
         <div>
-            <h3>Your order has been successfully submitted!</h3>
+            <h3>Bestillingen din er sendt inn!</h3>
             <button onClick={() => onClose()}>Close</button>
         </div>
     );
