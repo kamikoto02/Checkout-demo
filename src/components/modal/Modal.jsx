@@ -23,6 +23,7 @@ const Modal = forwardRef(({ children, onClose }, ref) => {
     }));
 
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         const handleKeyDown = (e) => {
             if (e.key === "Escape") {
@@ -32,7 +33,7 @@ const Modal = forwardRef(({ children, onClose }, ref) => {
         };
         document.addEventListener("keydown", handleKeyDown);
         return () => document.removeEventListener("keydown", handleKeyDown);
-    }, [onClose]);
+    }, [onClose, ref]);
 
 
     const handleClickOutside = (e) => {
