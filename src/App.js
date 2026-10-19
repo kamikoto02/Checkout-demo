@@ -5,6 +5,7 @@ import {useState, useEffect, useRef} from "react";
 import Header from "./components/header/Header";
 import Modal from "./components/modal/Modal";
 import SuccessfulModal from "./components/modal/SuccessfulModal/SuccessfulModal";
+import ErrorModal from "./components/modal/ErrorModal/ErrorModal";
 
 function App() {
     const [pickedPizza, setPickedPizza] = useState([]);
@@ -17,6 +18,7 @@ function App() {
     const [name, setName] = useState('')
 
     const modal = useRef(null);
+    const errorModal = useRef(null);
 
 
     useEffect(() => {
@@ -85,7 +87,7 @@ function App() {
 
         } catch (error) {
             console.error("Error:", error);
-            alert("Noe gikk galt");
+            handleOpenErrorModal()
         }
     };
 
@@ -96,11 +98,21 @@ function App() {
     function handleCloseModal() {
         modal.current.close()
     }
+    function handleOpenErrorModal() {
+        errorModal.current.open()
+
+    }
+    function handleCloseErrorModal() {
+        errorModal.current.close()
+    }
 
     return (
         <div className="App">
             <Modal ref={modal}>
                 <SuccessfulModal price={price} onClose={handleCloseModal}/>
+            </Modal>
+            <Modal>
+                <ErrorModal onClose={handleCloseErrorModal}/>
             </Modal>
             <Header />
             <form  onSubmit={submitHandler}>
