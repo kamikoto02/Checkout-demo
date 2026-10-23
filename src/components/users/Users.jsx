@@ -14,8 +14,11 @@ const Users = () => {
                 <p className={styles.title}>Brukere og bestillinger</p>
                 <div>
                     {Orders.map((user) => <div className={styles.users}>
-                        <p>{user.name}</p>    
-                        <p>Total price: {user.totalPrice}</p>
+                        <p>{user.name}</p>
+                        <div className={styles.user_data}>
+                            <p>Dato: {user.datetime}</p>
+                            <p>Total price: {user.totalPrice} kr</p>
+                        </div>                       
                     </div>)}
                 </div>
             </div>
