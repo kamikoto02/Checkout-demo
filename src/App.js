@@ -6,6 +6,7 @@ import Header from "./components/header/Header";
 import Modal from "./components/modal/Modal";
 import SuccessfulModal from "./components/modal/SuccessfulModal/SuccessfulModal";
 import ErrorModal from "./components/modal/ErrorModal/ErrorModal";
+import Users from './components/users/Users';
 
 function App() {
     const [pickedPizza, setPickedPizza] = useState([]);
@@ -115,7 +116,8 @@ function App() {
                 <ErrorModal onClose={handleCloseErrorModal}/>
             </Modal>
             <Header />
-            <form  onSubmit={submitHandler}>
+            <div className='main'>
+                <form  onSubmit={submitHandler}>
                 <h2>CHECKOUT</h2>
                 <label>
                     <p>Your full name:</p>
@@ -247,6 +249,8 @@ function App() {
 
                 <button className="submit-btn" type="submit">Bestill</button>
             </form>
+            <Users/>
+            </div>
         </div>
     );
 }
